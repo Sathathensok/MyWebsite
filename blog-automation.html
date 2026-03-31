@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Cut 70% of Manual Work at a Logistics Company – Sathathen</title>
+  <link rel="stylesheet" href="./Style.css">
+</head>
+<body>
+
+  <div id="reading-progress"></div>
+
+  <header>
+    <nav>
+      <h1 class="logo">Satha<span>then</span></h1>
+      <ul>
+        <li><a href="./Index.html">Home</a></li>
+        <li><a href="./aboutme.html">About Me</a></li>
+        <li class="dropdown">
+          <a href="#">Projects ▾</a>
+          <div class="dropdown-content">
+            <a href="./fullstack.html">Full Stack Web Developer</a>
+            <a href="./automation.html">Automation Developer</a>
+            <a href="./businessanalysis.html">Business & Process Analysis</a>
+          </div>
+        </li>
+        <li><a href="./blog.html" class="active">Blog</a></li>
+        <li><a href="./Index.html#contact">Contact</a></li>
+        <li><a href="./hireme.html" class="btn" style="padding:9px 20px;font-size:13px;margin-left:8px;">Hire Me</a></li>
+      </ul>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <div class="mobile-menu">
+    <span class="mobile-close">✕</span>
+    <a href="./Index.html">Home</a>
+    <a href="./aboutme.html">About Me</a>
+    <a href="./automation.html">Projects</a>
+    <a href="./blog.html">Blog</a>
+    <a href="./Index.html#contact">Contact</a>
+    <a href="./hireme.html">Hire Me</a>
+  </div>
+
+  <div class="article-hero">
+    <div class="article-hero-inner fade-up">
+      <div class="article-hero-meta">
+        <span class="blog-tag">Automation</span>
+        <span class="article-date">February 2026</span>
+        <span class="article-read-time">8 min read</span>
+      </div>
+      <h1>How I Cut 70% of Manual Work at a Logistics Company</h1>
+      <p class="lead">
+        A behind-the-scenes account of deploying UiPath RPA in a real Southeast Asian enterprise 
+        — the wins, the friction, and what nobody tells you about automation projects.
+      </p>
+    </div>
+  </div>
+
+  <article class="article-body">
+
+    <p>
+      In 2022, I was given a straightforward mandate at Kuehne + Nagel: find ways to work smarter 
+      across our Cambodia, Thailand, and Myanmar operations. What followed was a two-year journey 
+      into process automation that resulted in measurable savings, a few bruised egos (mine included), 
+      and lessons that no certification course will prepare you for.
+    </p>
+    <p>
+      This is a practical account of what we actually did, what worked, and what I would do 
+      differently if I started over today.
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout-item">
+        <div class="stat-callout-num"><em>70</em>%</div>
+        <div class="stat-callout-label">Reduction in manual processing time</div>
+      </div>
+      <div class="stat-callout-item">
+        <div class="stat-callout-num"><em>6</em> FTE</div>
+        <div class="stat-callout-label">Equivalent productivity boost</div>
+      </div>
+      <div class="stat-callout-item">
+        <div class="stat-callout-num">$<em>5.5k</em></div>
+        <div class="stat-callout-label">Monthly cost savings across 3 countries</div>
+      </div>
+    </div>
+
+    <h2>Where We Started: The Honest Picture</h2>
+    <p>
+      Before any automation, our sea logistics teams were spending significant time on tasks that 
+      were repetitive, rule-based, and error-prone by nature: extracting data from booking 
+      confirmations, cross-referencing it against our internal system (SeaLog), updating tracking 
+      records, and generating status reports for clients.
+    </p>
+    <p>
+      None of these tasks required creative thinking. All of them required careful, consistent 
+      execution. That's precisely the profile that makes a process a good automation candidate — 
+      and it's also why human beings are poorly suited to it. We get tired, distracted, and bored. 
+      Systems don't.
+    </p>
+
+    <div class="pull-quote">
+      <p>"The best automation targets are the tasks that exhaust good people — not the ones that challenge them."</p>
+    </div>
+
+    <h2>Choosing the Right Tool</h2>
+    <p>
+      We used <strong>UiPath</strong> as our primary RPA platform. It wasn't necessarily the cheapest 
+      option, but it had strong enterprise support, a solid exception-handling framework, and a large 
+      community — important when you're building something you need to maintain over years.
+    </p>
+    <p>
+      For lighter-weight, cloud-based workflows connecting SharePoint, Outlook, and Teams, 
+      we used <strong>Power Automate</strong>. The rule of thumb: UiPath for complex, 
+      multi-step desktop automation; Power Automate for anything already living in the Microsoft ecosystem.
+    </p>
+    <p>
+      We also used <strong>VBA</strong> for Excel-specific tasks. Some people dismiss VBA as outdated, 
+      but inside logistics operations where Excel is still the heartbeat of reporting, a well-built 
+      macro can save hours per week with zero licensing cost.
+    </p>
+
+    <div class="info-box">
+      <div class="info-box-label">Tool Selection Principle</div>
+      <p>
+        Don't choose your automation tool because it's the most powerful. Choose the one that best 
+        fits the task complexity and your team's ability to maintain it long-term. A complex UiPath 
+        workflow that nobody understands will become a liability within six months.
+      </p>
+    </div>
+
+    <h2>How We Selected What to Automate First</h2>
+    <p>
+      We mapped every repetitive task using a simple two-axis assessment: <strong>time consumed per 
+      week</strong> and <strong>rule-based consistency</strong>. Tasks that scored high on both 
+      — meaning they took significant time and followed a clear, consistent set of rules — went to 
+      the top of the list.
+    </p>
+    <p>
+      The first bots we deployed handled:
+    </p>
+    <ul>
+      <li>Extracting booking and shipment data from email attachments and mapping it into SeaLog</li>
+      <li>Generating daily status update reports and distributing them to the relevant teams</li>
+      <li>Auto-invoicing based on pre-agreed rate cards — this alone achieved an 86% adoption rate in Cambodia within months of launch</li>
+      <li>Monitoring key KPIs and flagging exceptions that required human attention</li>
+    </ul>
+    <p>
+      We deliberately left complex, judgment-heavy tasks for humans. Anything involving client 
+      negotiations, exception-handling decisions, or ambiguous documentation stayed off the 
+      automation roadmap entirely.
+    </p>
+
+    <h2>The Implementation: What Nobody Tells You</h2>
+    <p>
+      Here is what the UiPath certification courses do not adequately cover:
+    </p>
+
+    <h3>Change management is 60% of the work</h3>
+    <p>
+      When you tell experienced operations staff that a bot will handle part of their job, 
+      the reaction is rarely excitement. It's natural to feel unsettled. Some people worried 
+      about job security. Others were protective of the processes they'd built and refined 
+      over years.
+    </p>
+    <p>
+      We handled this by framing automation not as replacement but as reallocation. The time 
+      freed by automation was redirected toward client-facing work, quality checks, and problem-solving 
+      — the parts of the job that bots genuinely cannot do. This framing helped, but it required 
+      consistent reinforcement from management, not just a one-time announcement.
+    </p>
+
+    <h3>Bots break. Build for it from day one.</h3>
+    <p>
+      Any automation that touches an external system — an email inbox, a web portal, a legacy 
+      application — will encounter unexpected input at some point. A column header shifts. 
+      A PDF format changes. A portal update moves a button two pixels to the right.
+    </p>
+    <p>
+      We used UiPath's RE Framework (Robotic Enterprise Framework) from the start, which gave us 
+      structured exception handling, logging, and retry logic. Every bot had a designated human 
+      "exception owner" — someone responsible for reviewing failed transactions rather than 
+      assuming they didn't happen.
+    </p>
+
+    <h3>Log everything. Seriously.</h3>
+    <p>
+      We built a PostgreSQL logging system that captured every bot transaction: what was processed, 
+      when, what the outcome was, and how long it took. This served two purposes. First, it gave 
+      leadership visibility into actual productivity gains with hard data. Second, it helped us 
+      identify optimization opportunities — processes where bots were spending disproportionate 
+      time on low-value steps.
+    </p>
+
+    <div class="info-box">
+      <div class="info-box-label">Technical Stack</div>
+      <p>
+        UiPath Studio + Orchestrator · RE Framework · VB.NET for custom activities · 
+        PostgreSQL for transaction logging · Power BI for performance dashboards · 
+        Power Automate for Microsoft 365 integrations
+      </p>
+    </div>
+
+    <h2>Results: Honest and Measured</h2>
+    <p>
+      After 18 months of progressive deployment across three countries, the results were 
+      meaningful but not magical:
+    </p>
+    <ul>
+      <li>Manual processing time for routine shipment data tasks reduced by approximately 70%</li>
+      <li>Equivalent to a productivity boost of 6 FTEs — staff who were reallocated to higher-value work</li>
+      <li>Monthly operational cost savings of approximately $5,500 across Cambodia, Thailand, and Myanmar</li>
+      <li>Cambodia's sea logistics KPI performance moved into the global top 10 — automation was one factor among several</li>
+      <li>Auto-invoicing adoption reached 86% within the Cambodia target market</li>
+    </ul>
+    <p>
+      I want to be honest about that last point: automation was a contributor to KPI improvements, 
+      not the sole cause. Process redesign, better training, and management alignment all played 
+      equal or greater roles. Anyone who attributes a KPI improvement entirely to their automation 
+      project is probably not accounting for the full picture.
+    </p>
+
+    <div class="pull-quote">
+      <p>"A bot running a bad process just fails faster. Fix the process first, then automate it."</p>
+    </div>
+
+    <h2>What I'd Do Differently</h2>
+    <p>
+      If I were starting this programme from scratch today, I would:
+    </p>
+    <ol>
+      <li><strong>Spend twice as long on process documentation before touching UiPath.</strong> Every hour spent mapping and cleaning up a process before automation saves three hours of bot maintenance afterward.</li>
+      <li><strong>Pilot in one location before rolling out regionally.</strong> We moved faster than we should have in year one and paid for it with inconsistent results across countries.</li>
+      <li><strong>Assign dedicated bot maintenance ownership from day one.</strong> Bots are not set-and-forget. Without clear ownership, maintenance becomes nobody's job until something breaks in production.</li>
+      <li><strong>Build user dashboards earlier.</strong> Staff are more accepting of automation when they can see what it's doing in real time. Transparency reduces fear.</li>
+    </ol>
+
+    <div class="article-divider"></div>
+
+    <p>
+      Automation, done well, is not about replacing people. It's about giving them back time to 
+      do the work that actually requires a human — judgment, relationships, creativity, and the 
+      ability to handle situations that no rule set can fully anticipate.
+    </p>
+    <p>
+      If you're considering an RPA programme for your business and want a practical conversation 
+      about what's realistic for your situation, I'm happy to talk it through.
+    </p>
+
+    <div class="article-author">
+      <div class="article-author-avatar">
+        <img src="./Image/Aboutme.png" alt="Sathathen Sok">
+      </div>
+      <div>
+        <div class="article-author-name">Sathathen Sok</div>
+        <div class="article-author-title">Automation Developer · Logistics Specialist · MBA</div>
+      </div>
+    </div>
+
+    <div class="article-nav">
+      <a href="./blog.html" class="article-nav-back">← Back to Blog</a>
+      <a href="./hireme.html" class="btn">Work With Me →</a>
+    </div>
+
+  </article>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Satha<span>then</span></div>
+      <p class="footer-copy">© 2026 Sathathen Sok – All Rights Reserved</p>
+      <div class="footer-links">
+        <a href="./Index.html">Home</a>
+        <a href="./aboutme.html">About</a>
+        <a href="./hireme.html">Hire Me</a>
+        <a href="https://www.linkedin.com/in/sathathen-sok-219b62143/">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+</html>

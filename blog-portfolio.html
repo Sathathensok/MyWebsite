@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a Portfolio in Pure HTML/CSS/JS – Sathathen</title>
+  <link rel="stylesheet" href="./Style.css">
+</head>
+<body>
+
+  <div id="reading-progress"></div>
+
+  <header>
+    <nav>
+      <h1 class="logo">Satha<span>then</span></h1>
+      <ul>
+        <li><a href="./Index.html">Home</a></li>
+        <li><a href="./aboutme.html">About Me</a></li>
+        <li class="dropdown">
+          <a href="#">Projects ▾</a>
+          <div class="dropdown-content">
+            <a href="./fullstack.html">Full Stack Web Developer</a>
+            <a href="./automation.html">Automation Developer</a>
+            <a href="./businessanalysis.html">Business & Process Analysis</a>
+          </div>
+        </li>
+        <li><a href="./blog.html" class="active">Blog</a></li>
+        <li><a href="./Index.html#contact">Contact</a></li>
+        <li><a href="./hireme.html" class="btn" style="padding:9px 20px;font-size:13px;margin-left:8px;">Hire Me</a></li>
+      </ul>
+      <button class="hamburger"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <div class="mobile-menu">
+    <span class="mobile-close">✕</span>
+    <a href="./Index.html">Home</a>
+    <a href="./aboutme.html">About Me</a>
+    <a href="./automation.html">Projects</a>
+    <a href="./blog.html">Blog</a>
+    <a href="./Index.html#contact">Contact</a>
+    <a href="./hireme.html">Hire Me</a>
+  </div>
+
+  <div class="article-hero">
+    <div class="article-hero-inner fade-up">
+      <div class="article-hero-meta">
+        <span class="blog-tag">Tech</span>
+        <span class="article-date">January 2026</span>
+        <span class="article-read-time">10 min read</span>
+      </div>
+      <h1>Building a Portfolio in Pure HTML/CSS/JS — No Frameworks</h1>
+      <p class="lead">
+        A walkthrough of how I built this site from scratch, the design decisions behind it, 
+        animation techniques in vanilla JS, and the honest case for staying framework-free 
+        when you don't need a framework.
+      </p>
+    </div>
+  </div>
+
+  <article class="article-body">
+
+    <p>
+      When I started building my portfolio, the obvious path was to reach for a popular 
+      framework — React, Vue, or one of the many site builders that promise professional results 
+      in minutes. I chose not to, and this article explains why, and what I learned building 
+      everything from scratch.
+    </p>
+    <p>
+      Fair disclaimer upfront: I'm not a framework fundamentalist. For the right project, 
+      React is an excellent choice. But a personal portfolio is a specific type of project with 
+      specific constraints, and I think the framework-free approach deserves a more honest 
+      evaluation than it usually gets.
+    </p>
+
+    <h2>Why Not a Framework?</h2>
+    <p>
+      The most honest answer is: I didn't need one. A portfolio site is a collection of 
+      mostly-static pages. There's no complex state management. No real-time data synchronisation. 
+      No reusable component library serving thousands of users.
+    </p>
+    <p>
+      When you add React to a project that doesn't need it, you're adding:
+    </p>
+    <ul>
+      <li>A build process and associated toolchain (Webpack, Babel, or Vite)</li>
+      <li>A JavaScript bundle that the browser must download and parse before rendering</li>
+      <li>A framework version that will need updating and could introduce breaking changes</li>
+      <li>An abstraction layer between you and the HTML the browser actually reads</li>
+    </ul>
+    <p>
+      For a portfolio that lives or dies on first impression and load speed, these are real costs. 
+      And when you remove them, you discover that plain HTML, CSS, and JavaScript are significantly 
+      more capable than their reputation suggests.
+    </p>
+
+    <div class="pull-quote">
+      <p>"Understanding the basics deeply is more useful than knowing a framework shallowly."</p>
+    </div>
+
+    <h2>The Design System: One CSS File to Rule Them All</h2>
+    <p>
+      The entire visual language of this site lives in a single <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">Style.css</code> file, 
+      built around CSS custom properties (variables). This approach has a significant advantage: 
+      changing one variable updates every element that uses it throughout the entire site.
+    </p>
+    <p>
+      The design system is deliberately minimal. Rather than building a large component library 
+      upfront, I started with the typography and colour variables, then added components only as 
+      I needed them. This kept the CSS lean and the design cohesive.
+    </p>
+
+    <div class="info-box">
+      <div class="info-box-label">Core Design Tokens</div>
+      <p>
+        Two fonts: Playfair Display (display headings, editorial weight) + Plus Jakarta Sans (body, 
+        clean and readable). One accent colour: slate-teal (#0d7c8f). A six-step grey scale for 
+        backgrounds, borders, and text hierarchy. Everything else derives from these.
+      </p>
+    </div>
+
+    <h2>Animations Without a Library</h2>
+    <p>
+      This site uses four distinct animation types, all implemented in vanilla JavaScript 
+      and CSS without a single external animation library.
+    </p>
+
+    <h3>1. Scroll-triggered fade-ins</h3>
+    <p>
+      Every section that animates on scroll uses the <strong>Intersection Observer API</strong>, 
+      which allows the browser to notify JavaScript when an element enters the viewport — 
+      without the performance overhead of a scroll event listener. Elements get the class 
+      <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">fade-up</code> or 
+      <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">fade-in</code> 
+      in HTML, and CSS handles the actual animation with <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">opacity</code> 
+      and <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">transform</code>. 
+      The JS simply adds a <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">visible</code> class when the threshold is met.
+    </p>
+    <p>
+      Staggered animations (where multiple elements enter with slight delays) are handled by 
+      computing each element's index among its siblings and setting a 
+      <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">data-delay</code> 
+      attribute accordingly. The observer then uses <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">setTimeout</code> 
+      to apply the delay before adding the visible class.
+    </p>
+
+    <h3>2. Animated number counters</h3>
+    <p>
+      The statistics strip on the homepage uses a custom counter animation. It uses an 
+      easing function — specifically an exponential ease-out — to make the count feel 
+      natural rather than mechanical. The formula is straightforward: 
+      <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">eased = 1 - Math.pow(2, -10 * progress)</code>, 
+      which produces fast initial movement that decelerates as it approaches the target.
+    </p>
+
+    <h3>3. Typing effect</h3>
+    <p>
+      The rotating text in the hero section cycles through an array of words using a character-by-character 
+      approach with separate speeds for typing (75ms per character) and deletion (45ms per character). 
+      A short pause at the end of each word before deletion begins makes the effect feel intentional 
+      rather than mechanical.
+    </p>
+
+    <h3>4. Card tilt effect</h3>
+    <p>
+      The subtle 3D tilt on project cards is calculated from the mouse position relative to 
+      the card's bounding rectangle. The tilt angle is kept small (±5 degrees) to feel elegant 
+      rather than disorienting. CSS <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">transform-style: preserve-3d</code> 
+      is required for this to work correctly.
+    </p>
+
+    <h2>Multi-Page Architecture vs. SPA</h2>
+    <p>
+      This site uses separate HTML files for each page rather than a single-page application 
+      (SPA) pattern with client-side routing. For a portfolio, this has several advantages:
+    </p>
+    <ul>
+      <li>Each page is independently cacheable by the browser</li>
+      <li>Search engines can crawl and index each page separately (better SEO)</li>
+      <li>A broken JavaScript file doesn't prevent the HTML from loading</li>
+      <li>No routing library required</li>
+    </ul>
+    <p>
+      The shared elements (header, footer, navigation) are duplicated across pages. In a larger 
+      project this would be a maintenance concern, but for a portfolio of this size, 
+      it's a pragmatic tradeoff.
+    </p>
+
+    <h2>The Contact Form: FormSubmit.co</h2>
+    <p>
+      The contact form on the Hire Me page uses <strong>FormSubmit.co</strong>, a free service 
+      that accepts standard HTML form submissions and forwards them to a designated email address. 
+      No backend required, no server to manage, and it handles basic spam protection.
+    </p>
+    <p>
+      For a portfolio contact form, this is entirely sufficient. The alternative — building a 
+      Node.js backend with email sending, form validation, and rate limiting — is not warranted 
+      for the volume of contact form submissions a personal portfolio receives.
+    </p>
+
+    <h2>Performance Considerations</h2>
+    <p>
+      Without a build process, performance optimisation becomes more manual. The main things I did:
+    </p>
+    <ul>
+      <li>Used Google Fonts with <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">display=swap</code> to prevent layout blocking</li>
+      <li>Used <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">passive: true</code> on scroll event listeners to avoid main-thread blocking</li>
+      <li>Used Intersection Observer instead of scroll listeners for animation triggers</li>
+      <li>Kept the main JavaScript file small and deferred it to the end of the body</li>
+      <li>Used CSS <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">transform</code> and <code style="background:var(--grey-100);padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-size:14px;">opacity</code> for animations (GPU-composited, no layout reflow)</li>
+    </ul>
+
+    <div class="pull-quote">
+      <p>"The fastest code is the code you didn't ship."</p>
+    </div>
+
+    <h2>What I'd Do Differently for a Client Project</h2>
+    <p>
+      For a personal portfolio, this approach works well. For a client project with a team, 
+      ongoing development, and potentially complex features, I would likely make different choices:
+    </p>
+    <ul>
+      <li>A static site generator (like Eleventy or Astro) to handle the multi-page HTML duplication problem</li>
+      <li>A CMS if the client needs to update content without touching code</li>
+      <li>A component-based approach (React or similar) if the UI has genuinely complex interactive state</li>
+    </ul>
+    <p>
+      The right tool depends on the project's actual requirements. For this site, vanilla was right. 
+      For your project, it might not be — and that's a perfectly reasonable conclusion.
+    </p>
+
+    <div class="article-divider"></div>
+
+    <p>
+      If you have questions about any specific technique used in this site, or you'd like help 
+      building something similar for your own brand or business, feel free to get in touch.
+    </p>
+
+    <div class="article-author">
+      <div class="article-author-avatar">
+        <img src="./Image/Aboutme.png" alt="Sathathen Sok">
+      </div>
+      <div>
+        <div class="article-author-name">Sathathen Sok</div>
+        <div class="article-author-title">Full Stack Developer · Web Design · Vanilla JS</div>
+      </div>
+    </div>
+
+    <div class="article-nav">
+      <a href="./blog.html" class="article-nav-back">← Back to Blog</a>
+      <a href="./fullstack.html" class="btn">See Web Projects →</a>
+    </div>
+
+  </article>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Satha<span>then</span></div>
+      <p class="footer-copy">© 2026 Sathathen Sok – All Rights Reserved</p>
+      <div class="footer-links">
+        <a href="./Index.html">Home</a>
+        <a href="./aboutme.html">About</a>
+        <a href="./hireme.html">Hire Me</a>
+        <a href="https://www.linkedin.com/in/sathathen-sok-219b62143/">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+</html>
