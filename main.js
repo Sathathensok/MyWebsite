@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── 6. Active Nav Link ────────────────────────────────── */
-  const page = window.location.pathname.split('/').pop() || 'Index.html';
+  const page = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('nav ul li a').forEach(a => {
     const href = (a.getAttribute('href') || '').split('#')[0];
     if (href && page.toLowerCase() === href.toLowerCase()) a.classList.add('active');
